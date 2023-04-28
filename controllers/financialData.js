@@ -6,7 +6,6 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const portfolio = require('finance')
 const app = express();
-
 app.use(bodyParser.json());
 const getHome = (req, res) => {
     res.status(200).sendFile(__dirname + '/public/index.html');
