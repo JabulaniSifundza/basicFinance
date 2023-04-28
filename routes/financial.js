@@ -33,9 +33,6 @@ router.route('/roi').post(roi)
 router.route('/npv').post(npv)
 router.route('/accountingCalculations').post(accountingCalculations)
 router.route('/testPdf').get(testPdf)
-// router.route('/').get(getHome)
-// router.route('/financial-literacy').post(financialLiteracy)
-// router.route('/investment-calculations').post(investmentCalculations)
-// router.')
+
 
 module.exports = router;
