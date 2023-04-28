@@ -1,5 +1,4 @@
 const Finance = require('financejs');
-const tw = require ("trendyways");
 const { PDFDocument } = require('pdf-lib');
 const fs = require('fs');
 const yahooFinance = require('yahoo-finance');
@@ -8,8 +7,6 @@ const bodyParser = require('body-parser');
 const { SerpAPI } = require('langchain/tools');
 const { HuggingFaceInference } = require("langchain/llms/hf");
 const portfolio = require('finance')
-const {initializeAgentExecutorWithOptions} = require('langchain/agents');
-const fontkit = require('@pdf-lib/fontkit');
 
 const app = express();
 app.use(bodyParser.json());
