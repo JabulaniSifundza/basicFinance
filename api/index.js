@@ -12,8 +12,6 @@ app.use(express.static('public'));
 // Set the index.html file as the homepage
 app.use('/', financialInfo)
 
-
-
 // Start the server
 app.listen(3000, () => {
   console.log('Server started on port 3000');
