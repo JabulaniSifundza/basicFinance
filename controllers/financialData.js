@@ -4,8 +4,6 @@ const fs = require('fs');
 const yahooFinance = require('yahoo-finance');
 const express = require('express');
 const bodyParser = require('body-parser');
-const { SerpAPI } = require('langchain/tools');
-const { HuggingFaceInference } = require("langchain/llms/hf");
 const portfolio = require('finance')
 
 const app = express();
