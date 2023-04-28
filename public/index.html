@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100&family=Plus+Jakarta+Sans:wght@200;400;500&family=Sofia+Sans+Condensed:wght@400;500;600&display=swap" rel="stylesheet">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.js" integrity="sha512-tEqLjoRgU47rrCeCRKlUjDeDD7IbMCf/dpcedUG6pXUCZOweBDCg8+8H+XdiTNptUU+TK18r5DPKZFKxLPSWsg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js" integrity="sha512-pAoMgvsSBQTe8P3og+SAnjILwnti03Kz92V3Mxm0WOtHuA482QeldNM5wEdnKwjOnQ/X11IM6Dn3nbmvOz365g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Home</title>
+</head>
+<body>
+    <div class="file-folder">
+        <div class="file-folder-tabs">
+            <div 
+                id="defaultOpen"
+                onclick="openPage('loans', this, '#2191FB')" 
+                class="file-folder-tab">Loan Calculations
+            </div>
+            <div 
+                onclick="openPage('budget', this, '#2191FB')" 
+                class="file-folder-tab">Personal Budget Calculations
+            </div>
+            <div
+                onclick="openPage('accounting', this, '#2191FB')" 
+                class="file-folder-tab">Accouting Calculations
+            </div>
+            <div 
+                onclick="openPage('simpleReturns', this, '#2191FB')" 
+                class="file-folder-tab">Simple Return Calculations
+            </div>
+            <div 
+                onclick="openPage('savings', this, '#2191FB')" 
+                class="file-folder-tab">Company Profile
+            </div>
+            <!--div
+            onclick="openPage('investments', this, '#2191FB')" 
+            class="file-folder-tab">Investment Portfolio Calculations</div -->
+            <!--div 
+            onclick="openPage('literacy', this, '#2191FB')"
+            class="file-folder-tab">Financial Literacy</div -->
+        </div>
+    </div>
+        <div class="file-folder-page" id="loans">
+            <div class="loanDiv">
+                <h2>
+                    Loan Amortization
+                </h2>
+                <p class="loanPrompt">
+                    Find out how much you would have to pay monthly to pay off a loan
+                </p>
+                <div class="loanDetails">
+                    <input type="number" id="loanAmount" step="0.01" placeholder="Loan Amount">
+                    <span id="amountEntered"></span>
+                    <input type="number" id="amortizeLoanIntrst" step="0.01" placeholder="Interest Rate(%)">
+                    <label for="month-slider">Loan Term (in months):</label>
+                    <input type="range" id="month-slider" min="0" max="60" step="1">
+                    <span id="month-value"></span>
+                    <button id="amortizeLoan">Calculate</button>
+
+                    <div>
+                        <span id="amortizedValue"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="loanDiv">
+                <h2>
+                    Compound Interest
+                </h2>
+                <p class="loanPrompt">
+                    Calculate the Compound interest of a loan or deposit
+                </p>
+                <div class="loanDetails">
+                    <input type="number" id="compoundPrincipal" step="0.01" placeholder="Principal Amount">
+                    <span id="amountEnteredCompound"></span>
+                    <input type="number" id="percentageCompound" step="0.01" placeholder="Interest Rate(%)">
+                    <label for="month-slider">Compounding periods:</label>
+                    <input type="range" id="compounding-period" min="0" max="60" step="1">
+                    <label for="month-slider">Remaining periods:</label>
+                    <input type="range" id="remaining-period" min="0" max="60" step="1">
+                    <button id="compoundBtn">Calculate</button>
+
+                    <div>
+                        <span id="compoundedValue"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="loanDiv">
+                
+                <!--div class="loanDetails">
+                    <h2>
+                        Future Value
+                    </h2>
+                    <p class="loanPrompt">
+                        Find the Future Value of a Cash Amount
+                    </p>
+                    <input type="number" id="FvcashAmount" step="0.01" placeholder="Cash Amount">
+                    <span id="amountEnteredFuture"></span>
+                    <input type="number" id="percentageFuture" step="0.01" placeholder="Interest Rate(%)">
+                    <label for="month-slider">Periods:</label>
+                    <input type="range" id="future-value-periods" min="0" max="60" step="1">
+                    <button id="futureValBtn">Calculate</button>
+
+                    <div>
+                        <span id="futureValSpan"></span>
+                    </div>
+                </div-->
+            </div>
+        </div>
+        <div class="file-folder-page" id="budget">
+            <div class="loanDiv">
+                <h2>
+                    Personal Budgeting
+                </h2>
+                <p class="loanPrompt">
+                    Perform Basic Budget Calculations
+                </p>
+                <div class="loanDetails">
+                    <p class="loanPrompt">
+                        Income(s)
+                    </p>
+                    <div class="appendDiv" id="incomeStreamDiv">
+                        <input type="number" id="cashAmount" step="0.01" placeholder="Cash Amount" name="budgetIncomeStream">
+                    </div>
+                    <button id="addIncomeStrmBtn" class="appendBtn">Add Stream</button>
+
+                    <p class="loanPrompt">
+                        Expenses
+                    </p>
+
+                    <div class="appendDiv" id="expenseDiv">
+                        <input type="number" id="cashAmount" step="0.01" placeholder="Expense Cash Amount" name="budgetExpense">
+                    </div>
+                    <button id="addExpenseBtn" class="appendBtn">Add Expense</button>
+                    <p class="loanPrompt">
+                        Savings
+                    </p>
+                    <input type="number" id="savedCashAmount" step="0.01" placeholder="Amount Saved">
+                    <input type="number" id="savingGoalAmount" step="0.01" placeholder="Saving Goal">
+
+                    <button id="calculateBudgtBtn">Calculate</button>
+                </div>
+            </div>
+        </div>
+        <div class="file-folder-page" id="accounting">
+            <div class="loanDiv">
+                <h2>
+                    Income Statement
+                </h2>
+                <p class="loanPrompt">
+                    Create an Income Statement for your business
+                </p>
+                <div class="loanDetails">
+                    <input type="text" id="incomeStateCompanyName" placeholder="Enter your Company's Name">
+                    <input type="number" id="incomeStateCogs" step="0.01" placeholder="Cost of Revenue/COGS">
+                    <input type="number" id="incomeStateRev" step="0.01" placeholder="Revenue">
+                    <span id="grossProf"></span>
+                    <input type="number" id="incomeStateRent" step="0.01" placeholder="Rent">
+                    <input type="number" id="incomeStateUtilities" step="0.01" placeholder="Utilities">
+                    <input type="number" id="incomeStateSalaries" step="0.01" placeholder="Salaries and Wages">
+                    <input type="number" id="incomeStateMarketing" step="0.01" placeholder="Marketing Costs">
+                    <input type="number" id="incomeStateSupplies" step="0.01" placeholder="Office Supplies">
+                    <span id="operatingProf"></span>
+                    <input type="number" id="incomeStateIntrstExp" step="0.01" placeholder="Interest Expense">
+                    <input type="number" id="incomeStateDepreciate" step="0.01" placeholder="Depreciation">
+                    <input type="number" id="incomeStateTaxExp" step="0.01" placeholder="Tax Expense">
+                    <span id="netProf"></span>
+                    <div>
+                        <span id="grossMargin"></span>
+                        <span id="operatingMargSpn"></span>
+                        <span id="netMarginSpn"></span>
+                    </div>
+                    <button id="accountingReportBtn">Generate Report</button>
+                </div>
+            </div>
+        </div>
+        <div class="file-folder-page" id="simpleReturns">
+            
+            <div class="loanDiv">
+                <h2>
+                    Simple Growth Rate
+                </h2>
+                <p class="loanPrompt">
+                    Calculate CAGR (Compound Annual Growth Rate)
+                </p>
+                <div class="loanDetails">
+                    <input type="number" id="CAGRstartVal" step="0.01" placeholder="Initial Value">
+                    <input type="number" id="CAGRendVal" step="0.01" placeholder="Last Value">
+                    <label for="month-slider">Periods:</label>
+                    <input type="range" id="cagrPeriods" min="0" max="60" step="1">
+                    <button id="calculateCagr">Calculate CAGR</button>
+
+
+                    <div>
+                        <span id="cagrSpan"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="loanDiv">
+                <h2>
+                    Simple Return On Investment
+                </h2>
+                <p class="loanPrompt">
+                    Calculate ROI
+                </p>
+                <div class="loanDetails">
+                    <input type="number" id="roiInitialAmnt" step="0.01" placeholder="Initial Investment">
+                    <input type="number" id="roiEarnings" step="0.01" placeholder="Earnings Total">
+                    <button id="calculateROI">Calculate ROI</button>
+
+                     <div>
+                        <span id="roiSpan"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="loanDiv">
+                <h2>
+                    Discount Factor/Rate
+                </h2>
+                <p class="loanPrompt">
+                    Calculate DF
+                </p>
+                <div class="loanDetails">
+                <input type="number" id="DfRate" step="0.01" placeholder="Interest Rate">
+                <label for="month-slider">Periods:</label>
+                <input type="range" id="dfPeriods" min="0" max="60" step="1">
+                <button id="calculateDf">Calculate Discount Factor</button>
+
+                <div id="dfContainer">
+
+                </div>
+                </div>
+            </div>
+
+            <!--div class="loanDiv">
+                <h2>
+                    Net Present Value
+                </h2>
+                <p class="loanPrompt">
+                    Calculate NPV
+                </p>
+
+                <div class="loanDetails">
+                    <input type="number" id="initialNPVinvestment" step="0.01" placeholder="Initial Investment">
+                    <input type="number" id="npvDiscountRate" step="0.01" placeholder="Discount Rate">
+                    <div class="appendDiv" id="cashFlowDiv">
+                        <input type="number" id="cashFlow" step="0.01" placeholder="Cashflow Amount" name="npvCashFlow">
+                    </div>
+                    <button id="addCashFlowBtn" class="appendBtn">Add Cashflow</button>
+
+                    <button id="calculateNpvBtn">Calculate NPV</button>
+
+
+                    <div>
+                        <span id="npvSpan"></span>
+                    </div>
+                </div>
+            </div-->
+        </div>
+        <div class="file-folder-page" id="savings">
+            
+            <div class="loanDiv">
+                <h2>
+                    Company Financial Profile
+                </h2>
+                <p class="loanPrompt">
+                    
+                </p>
+                <div class="loanDetails">
+                    <input type="text" id="profileStockTicker" step="0.01" placeholder="Company Ticker Symbol">
+                    <button id="getCompanyProfileBtn">Get Company Profile</button>
+                </div>
+            </div>
+            <div class="loanDiv">
+                <p>Market Capitalization:</p>
+                <span id="marketCap"></span>
+                <p>Company Share Price:</p>
+                <span id="sharePrice"></span>
+                <p>Total Cash:</p>
+                <span id="totalCash"></span>
+                <p>Operating Cash Flow:</p>
+                <span id="operatingCashflow"></span>
+                <p>Free Cash Flow:</p>
+                <span id="freeCashFlow"></span>
+                <p>Cash Per Share:</p>
+                <span id="cashPerShare"></span>
+                <p>Total Debt:</p>
+                <span id="totalDebt"></span>
+                <p>Current Ratio:</p>
+                <span id="currentRatio"></span>
+                <p>Total Revenue:</p>
+                <span id="totalRev"></span>
+                <p>Revenue Per Share:</p>
+                <span id="revPerShare"></span>
+                <p>Revenue Growth:</p>
+                <span id="revenueGrowth"></span>
+                <p>Gross Profit:</p>
+                <span id="grossProfit"></span>
+                <p>Gross Margin:</p>
+                <span id="grossMargin"></span>
+                <p>EBITDA:</p>
+                <span id="ebitda"></span>
+                <p>Earnings Growth:</p>
+                <span id="earningsGrowth"></span>
+                <p>Profit Margin:</p>
+                <span id="profitMargin"></span>
+                <p>Stock Beta:</p>
+                <span id="stockBeta"></span>
+                <p>Analyst Recommendation:</p>
+                <span id="analystRec"></span>
+            </div>
+        </div>
+        <div class="file-folder-page" id="investments">
+            <div class="loanDiv">
+                <h2>
+                    Investment Portfolio Optimization
+                </h2>
+                <p class="loanPrompt">
+                    Please enter the Ticker symbols for the comapnies you want in your portfolio
+                </p>
+                <div class="loanDetails">
+                <div class="appendDiv" id="portfolioTickerDiv">
+                    <input type="text" id="portfolioTicker" step="0.01" placeholder="Ticker symbol" name="portfolioTicker">
+                </div>
+                <button id="addPortfolioSTockBtn" class="appendBtn">Add Ticker</button>
+
+                <button id="createPortfolioBtn">Create Portfolio</button>
+                </div>
+            </div>
+        </div>
+        <div class="file-folder-page" id="literacy">
+            <!-- Content for page 3 goes here -->
+            <p>Will it show</p>
+    </div>
+
+
+    <script>
+
+    const numberInput = document.getElementById("loanAmount");
+    const formattedValue = document.getElementById("amountEntered");
+    const armotizeBtn = document.getElementById("amortizeLoan")
+    const compoundBtn = document.getElementById("compoundBtn")
+    const futureValBtn = document.getElementById("futureValBtn")
+    const addExpenseBtn = document.getElementById("addExpenseBtn")
+    const calculateBudgtBtn = document.getElementById("calculateBudgtBtn")
+    const accountingReportBtn = document.getElementById("accountingReportBtn")
+    const calculateCagr = document.getElementById("calculateCagr")
+    const calculateRoi = document.getElementById("calculateROI")
+    const calculateDf = document.getElementById("calculateDf")
+    const calculateNpvBtn = document.getElementById("calculateNpvBtn")
+    const getCompanyProfileBtn = document.getElementById("getCompanyProfileBtn")
+    const addPortfolioSTockBtn = document.getElementById("addPortfolioSTockBtn")
+    const createPortfolioBtn = document.getElementById("createPortfolioBtn")
+
+    const incomeStreamDiv = document.getElementById("incomeStreamDiv")
+    const expenseDiv = document.getElementById("expenseDiv")
+    const cashFlowDiv = document.getElementById("cashFlowDiv")
+    const portfolioTickerDiv = document.getElementById("portfolioTickerDiv")
+
+    const totalRevInptVal = document.getElementById("incomeStateRev")
+    const cogsAmntVal = document.getElementById("incomeStateCogs")
+    const grossRevAmntVal = document.getElementById("grossProf")
+
+    const intrstExpAmnt = document.getElementById("incomeStateIntrstExp")
+    const depreciateExpAmnt = document.getElementById("incomeStateDepreciate")
+    const taxExpAmnt = document.getElementById("incomeStateTaxExp")
+    const netProfAmnt = document.getElementById("netProf")
+
+      function formatCurrency(value) {
+        return Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        }).format(value);
+    }
+
+    function unformatter(value) {
+        value = value.replace("$", "");
+        value = value.replace(",", "");
+        value = parseFloat(value);
+        return value;
+    }
+
+         // Get the element with id="defaultOpen" and click on it
+      document.getElementById("defaultOpen").click();
+
+      function openPage(pageName, elmnt, color) {
+        // Hide all elements with class="tabcontent" by default */
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("file-folder-page");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+
+        // Remove the background color of all tablinks/buttons
+        tablinks = document.getElementsByClassName("file-folder-tab");
+        for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].style.backgroundColor = "";
+          tablinks[i].style.color = "#191919";
+          tablinks[i].style.textDecoration = "none";
+          tablinks[i].style.border = "none";
+        }
+
+        // Show the specific tab content
+        document.getElementById(pageName).style.display = "block";
+
+        // Add the specific color to the button used to open the tab content
+        elmnt.style.backgroundColor = color;
+        elmnt.style.textDecoration = "underline"
+        elmnt.style.textUnderlineOffset = "4px"
+        elmnt.style.textDecorationThickness = "2.5px"
+        elmnt.style.border = "2px solid #03256C" 
+        elmnt.style.borderBottom = "none"
+        elmnt.style.color = "#FFFFFF"
+      }
+
+
+    totalRevInptVal.addEventListener("input", ()=>{
+        const revAmnt = parseFloat(totalRevInptVal.value)
+        const cogsAmnt = parseFloat(cogsAmntVal.value)
+        if(!isNaN(cogsAmnt) && !isNaN(revAmnt)){
+            const grossRevAmnt = revAmnt - cogsAmnt
+            const formatted = formatCurrency(grossRevAmnt)
+            grossRevAmntVal.textContent = formatted
+        }
+        else{
+            grossRevAmntVal.textContent = ""
+        }
+    })
+
+    cogsAmntVal.addEventListener("input", ()=>{
+        const revAmnt = parseFloat(totalRevInptVal.value)
+        const cogsAmnt = parseFloat(cogsAmntVal.value)
+        if(!isNaN(cogsAmnt) && !isNaN(revAmnt)){
+            const grossRevAmnt = revAmnt - cogsAmnt
+            const formatted = formatCurrency(grossRevAmnt)
+            grossRevAmntVal.textContent = formatted
+        }
+        else{
+            grossRevAmntVal.textContent = ""
+        }
+    })
+
+    const rentExpAmnt = document.getElementById("incomeStateRent")
+    const utilsExpAmnt = document.getElementById("incomeStateUtilities")
+    const salaryExpAmnt = document.getElementById("incomeStateSalaries")
+    const mrktngExpAmnt = document.getElementById("incomeStateMarketing")
+    const suppExpAmnt = document.getElementById("incomeStateSupplies")
+    const operProfAmnt = document.getElementById("operatingProf")
+
+    suppExpAmnt.addEventListener("input", ()=>{
+        const rentAmnt = parseFloat(rentExpAmnt.value)
+        const utilsAmnt = parseFloat(utilsExpAmnt.value)
+        const salaryAmnt = parseFloat(salaryExpAmnt.value)
+        const mrktngAmnt = parseFloat(mrktngExpAmnt.value)
+        const suppAmnt = parseFloat(suppExpAmnt.value)
+        const revAmnt = parseFloat(totalRevInptVal.value)
+        const cogsAmnt = parseFloat(cogsAmntVal.value)
+        if(!isNaN(rentAmnt) && !isNaN(utilsAmnt) && !isNaN(salaryAmnt) && !isNaN(mrktngAmnt) && !isNaN(suppAmnt)){
+            const totalOperatingExp = rentAmnt + utilsAmnt + salaryAmnt + mrktngAmnt + suppAmnt
+            const grossProf = revAmnt - cogsAmnt
+            const operateIncome = grossProf - totalOperatingExp
+            const formatted = formatCurrency(operateIncome)
+            operProfAmnt.textContent = formatted  
+        }
+        else{
+            operProfAmnt.textContent = ""
+        }
+    })
+
+    depreciateExpAmnt.addEventListener("input", ()=>{
+        const rentAmnt = parseFloat(rentExpAmnt.value)
+        const utilsAmnt = parseFloat(utilsExpAmnt.value)
+        const salaryAmnt = parseFloat(salaryExpAmnt.value)
+        const mrktngAmnt = parseFloat(mrktngExpAmnt.value)
+        const suppAmnt = parseFloat(suppExpAmnt.value)
+        const revAmnt = parseFloat(totalRevInptVal.value)
+        const cogsAmnt = parseFloat(cogsAmntVal.value)
+        const intrstExp = parseFloat(intrstExpAmnt.value)
+        const depreciateExp = parseFloat(depreciateExpAmnt.value)
+        if(!isNaN(intrstExp) && !isNaN(depreciateExp)){
+            const totalOperatingExp = rentAmnt + utilsAmnt + salaryAmnt + mrktngAmnt + suppAmnt
+            const grossProf = revAmnt - cogsAmnt
+            const operateIncome = grossProf - totalOperatingExp
+            const ebit = operateIncome - (intrstExp + depreciateExp)
+            taxExpAmnt.value = ebit > 0 ? Math.abs((ebit * 0.21).toFixed(2)) : 0;
+            const net = ebit - parseFloat(taxExpAmnt.value)
+            const formatted = formatCurrency(net)
+            netProfAmnt.textContent = formatted
+        }
+        else{
+            netProfAmnt.textContent = ""
+        }        
+    })
+
+
+
+
+    numberInput.addEventListener("input", () => {
+        const value = parseFloat(numberInput.value);
+        if(!isNaN(value)){
+            const formatted = formatCurrency(value);
+            formattedValue.textContent = formatted;
+        }
+        else{
+            formattedValue.textContent = "";
+        }
+    });
+
+  
+
+    const monthSlider = document.getElementById('month-slider');
+    const monthValue = document.getElementById('month-value');
+
+    monthSlider.addEventListener('input', (event) => {
+        const value = event.target.value;
+        if(value > 0){
+            monthValue.textContent = `${value} months`;
+        }
+        else if(value === 1){
+            monthValue.textContent = `${value} month`;
+
+        }
+        else{
+            monthValue.textContent = "";
+        }  
+    });
+
+    addIncomeStrmBtn.addEventListener("click", ()=>{
+        let incomeStream = document.createElement("input")
+        incomeStream.setAttribute("type", "number")
+        incomeStream.setAttribute("name", "budgetIncomeStream")
+        incomeStream.setAttribute("placeholder", "Cash Amount")
+        incomeStreamDiv.append(incomeStream)
+      })
+
+    addExpenseBtn.addEventListener("click", ()=>{
+        let expenseAmnt = document.createElement("input")
+        expenseAmnt.setAttribute("type", "number")
+        expenseAmnt.setAttribute("name", "budgetExpense")
+        expenseAmnt.setAttribute("placeholder", "Expense Cash Amount")
+        expenseDiv.append(expenseAmnt)
+    })
+
+   
+
+    addPortfolioSTockBtn.addEventListener("click", ()=>{
+        let portfolioOptTicker = document.createElement("input")
+        portfolioOptTicker.setAttribute("type", "text")
+        portfolioOptTicker.setAttribute("name", "portfolioTicker")
+        portfolioOptTicker.setAttribute("placeholder", "Ticker symbol")
+        portfolioTickerDiv.append(portfolioOptTicker)
+    })
+
+    incomeStateCogs.addEventListener("input", (event)=>{
+        const value = incomeStateRev - event.target.value;
+        if(value > 0){
+            grossProf.style.color = 'green'
+            grossProf.textContent = value
+        }
+        else if(value < 0){
+            grossProf.style.color = 'red'
+            grossProf.textContent = value
+        }
+        else{
+            grossProf.textContent = ""
+        }
+        
+    })
+
+
+
+      armotizeBtn.addEventListener("click", async ()=>{
+        const amortizeLoanAmnt = document.getElementById("loanAmount").value;
+        const amortizeLoanIntrst = document.getElementById("amortizeLoanIntrst").value;
+        const amortizeMonthSlider = document.getElementById("month-slider").value;
+        const response = await fetch(`/loan-armotization?loanAmount=${amortizeLoanAmnt}&interestRate=${amortizeLoanIntrst}&loanPeriod=${amortizeMonthSlider}`, {
+            method: 'POST'
+        })
+        const data = await response.json()
+        console.log(data)
+        const amortizedValue = document.getElementById("amortizedValue")
+        const amortizedAmnt = formatCurrency(data)
+        amortizedValue.textContent = `${amortizedAmnt}`
+      })
+
+      compoundBtn.addEventListener("click", async()=>{
+        const compoundPrincipal = document.getElementById("compoundPrincipal").value;
+        const percentageCompound = document.getElementById("percentageCompound").value;
+        const compoundingPeriod = document.getElementById("compounding-period").value;
+        const compoundRemaining = document.getElementById("remaining-period").value;
+        const response =  await fetch(`/compoundInterest`, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({interestRate: percentageCompound, compoundPeriods: compoundingPeriod, principal: compoundPrincipal, periodsRemaining: compoundRemaining})
+        })
+        const data = await response.json()
+        const compoundedValue = document.getElementById("compoundedValue")
+        const compondedAmnt = formatCurrency(data)
+        compoundedValue.textContent = `${compondedAmnt}`
+      })
+
+      /*futureValBtn.addEventListener("click", async()=>{
+        const futureValCashAmnt = document.getElementById("FvcashAmount").value;
+        const futureValIntrst = document.getElementById("percentageFuture").value;
+        const futureValPeriods = document.getElementById("future-value-periods").value
+
+        const response = await fetch(`/futureValue`, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({rate: futureValIntrst, amount: futureValCashAmnt, periods: futureValPeriods})
+        })
+
+        const data = await response.json()
+        const futureValSpan = document.getElementById("futureValSpan")
+        const futureValAmnt = formatCurrency(data)
+        futureValSpan.textContent = `${futureValAmnt}`
+      })*/
+
+
+      calculateBudgtBtn.addEventListener("click", async()=>{
+        const incomeStreams = document.getElementsByName("budgetIncomeStream")
+        const budgetExpense = document.getElementsByName("budgetExpense")
+        const budgetAmntSaved = document.getElementById("savedCashAmount").value
+        const budgetSavingGoal = document.getElementById("savingGoalAmount").value
+        const addIncomeStrmBtn = document.getElementById("addIncomeStrmBtn")
+        const incomeStreamTotal = Array.from(incomeStreams).reduce((acc, income)=> acc + Number(income.value), 0)
+        const expenseTotals = Array.from(budgetExpense).reduce((acc, expense)=> acc + Number(expense.value), 0)
+
+        try{
+            const response = await fetch(`http://localhost:3000/budgetCalculations`,{
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({totalIncome: incomeStreamTotal,totalExpenses: expenseTotals,totalSavings: Number(budgetAmntSaved),savingsGoal: Number(budgetSavingGoal)})
+            })
+            const data = await response.json()
+            const {incomeToExpensesRatio, savingsToGoalRatio, surplusDeficitRatio, surplusDeficit} = data
+            createBudgetPdf(incomeStreamTotal, expenseTotals, budgetAmntSaved, surplusDeficit, incomeToExpensesRatio, surplusDeficitRatio, savingsToGoalRatio)
+        }
+        catch(error){
+            console.log(error)
+        }
+      })
+
+      accountingReportBtn.addEventListener("click", async()=>{
+        
+        const incomeStateCompanyName = document.getElementById("incomeStateCompanyName").value
+        const incomeStateRev = document.getElementById("incomeStateRev").value
+        const incomeStateCogs = document.getElementById("incomeStateCogs").value
+        const incomeStateRent = document.getElementById("incomeStateRent").value
+        const incomeStateUtilities = document.getElementById("incomeStateUtilities").value
+        const incomeStateSalaries = document.getElementById("incomeStateSalaries").value
+        const incomeStateMarketing = document.getElementById("incomeStateMarketing").value
+        const incomeStateSupplies = document.getElementById("incomeStateSupplies").value
+        const incomeStateIntrstExp = document.getElementById("incomeStateIntrstExp").value
+        const incomeStateDepreciate = document.getElementById("incomeStateDepreciate").value
+        const incomeStateTaxExp = document.getElementById("incomeStateTaxExp").value
+        const grossProf = document.getElementById("grossProf").textContent
+        const operatingProf = document.getElementById("operatingProf").textContent
+        const netProf = document.getElementById("netProf").textContent
+
+        const formatGross = unformatter(grossProf)
+        const formatOperating = unformatter(operatingProf)
+        const formatNet = unformatter(netProf)
+        console.log(unformatter(grossProf))
+        //let operatingProf = document.getElementById("operatingProf").textContent
+        //let netProf = document.getElementById("netProf").textContent
+        //operatingProf = grossProf.textContent ? Number(grossProf.textContent) - Number(incomeStateRent + incomeStateUtilities + incomeStateSalaries + incomeStateMarketing + incomeStateSupplies) : 0
+        const operatingExpensesVal = Number(incomeStateRent) + Number(incomeStateUtilities) + Number(incomeStateSalaries) + Number(incomeStateMarketing) + Number(incomeStateSupplies)
+        //const taxExpense = Number(operatingProf) * 0.21
+        //netProf = Number(operatingProf) - Number(incomeStateIntrstExp + incomeStateDepreciate + taxExpense)
+
+        const response = await fetch(`/accountingCalculations`, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({netProfit: formatNet, revenue: incomeStateRev, grossProfit: formatGross, operatingIncome: formatOperating})
+        })
+        const data = await response.json()
+        console.log(data)
+        const {netMargin, grossMargin, operatingMargin} = data
+        const pctNetMarg = data.netMarg
+        const pctGrossMarg = data.grossMarg
+        const pctOperatingMarg = data.operatingMarg
+        console.log(data.netMarg)
+        console.log(data.grossMarg)
+        console.log(data.operatingMarg)
+        const stateGross = formatCurrency(formatGross)
+        const stateNet = formatCurrency(formatNet)
+        const stateOperating = formatCurrency(formatOperating)
+        createIncomeStatementPdf(incomeStateCompanyName, incomeStateRev, incomeStateCogs, stateGross, operatingExpensesVal, stateOperating, incomeStateTaxExp,  stateNet, pctNetMarg, pctOperatingMarg, pctGrossMarg)
+      })
+
+
+      calculateCagr.addEventListener("click", async()=>{
+        const cagrStart = document.getElementById("CAGRstartVal").value;
+        const cagrEnd = document.getElementById("CAGRendVal").value;
+        const cagrPeriods = document.getElementById("cagrPeriods").value;
+        const response = await fetch(`/cagr`, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({initial: cagrStart, final: cagrEnd, periods: cagrPeriods})
+        })
+        const data = await response.json()
+        const cagrSpan = document.getElementById("cagrSpan")
+        cagrSpan.textContent = `${data}% CAGR`
+      })
+
+      calculateRoi.addEventListener("click", async()=>{
+        const roiInitialAmnt = document.getElementById("roiInitialAmnt").value;
+        const roiEarnings = document.getElementById("roiEarnings").value
+        const response = await fetch(`/roi`, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({initial: roiInitialAmnt, final: roiEarnings})
+        })
+
+        const data = await response.json()
+        console.log(data)
+        const roiSpan = document.getElementById("roiSpan")
+        roiSpan.textContent = `${data}% Return on Investement`
+        
+      })
+
+      calculateDf.addEventListener("click", async()=>{
+        const dfRate = document.getElementById("DfRate").value
+        const dfPeriods = document.getElementById("dfPeriods").value
+        const response = await fetch(`/discountFactor`, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({rate: dfRate, periods: dfPeriods})
+        })
+        const data = await response.json()
+        const factorCont = document.createElement("div")
+        factorCont.classList.add("discountFactorsCont")
+        const factors = data.map((factor)=>{
+            const factorSpan = document.createElement("p")
+            factorSpan.textContent = `${factor}`
+            factorCont.appendChild(factorSpan)
+        })
+        document.getElementById("dfContainer").appendChild(factorCont)
+      })
+
+     /*calculateNpvBtn.addEventListener("click", async()=>{
+        const initialNPVinvestment = document.getElementById("initialNPVinvestment").value
+        const npvDiscountRate = document.getElementById("npvDiscountRate").value
+        const npvCashFlow = document.getElementsByName("npvCashFlow").value
+        const addCashFlowBtn = document.getElementById("addCashFlowBtn").value
+        const response = await fetch(`/npv`, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({discount: npvDiscountRate, initial: initialNPVinvestment, cashflows: npvCashFlow})
+        })
+        const data = await response.json()
+        console.log(data)
+        const npvSpan = document.getElementById("npvSpan")
+        const npvVal = formatCurrency(data)
+        npvSpan.textContent = `${npvVal}`
+      })*/
+
+      getCompanyProfileBtn.addEventListener("click", async()=>{
+        const profileStockTicker = document.getElementById("profileStockTicker").value
+        const response = await fetch(`/investment-calculations`, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ticker: profileStockTicker})
+        })
+        const data = await response.json()
+        const mrktCapSpan = document.getElementById("marketCap")
+        const mrktCapVal = formatCurrency(data.summaryDetail.marketCap)
+        mrktCapSpan.textContent = `${mrktCapVal}`
+        const sharePriceSpn = document.getElementById("sharePrice")
+        const sharePriceVal = formatCurrency(data.summaryDetail.previousClose)
+        sharePriceSpn.textContent = `${sharePriceVal}`
+        const totalCashSpn = document.getElementById("totalCash")
+        const totalCashVal = formatCurrency(data.financialData.totalCash)
+        totalCashSpn.textContent = `${totalCashVal}`
+        const operatingCashflowSpn = document.getElementById("operatingCashflow")
+        const operatingCashflowVal = formatCurrency(data.financialData.operatingCashflow)
+        operatingCashflowSpn.textContent = `${operatingCashflowVal}`
+        const fcf = document.getElementById("freeCashFlow")
+        const fcfVal = formatCurrency(data.financialData.freeCashflow)
+        fcf.textContent = `${fcfVal}`
+        const cps = document.getElementById("cashPerShare")
+        const cpsVal = formatCurrency(data.financialData.totalCashPerShare)
+        cps.textDecoration = `${cpsVal}`
+        const totalDbt = document.getElementById("totalDebt")
+        const dbtVal = formatCurrency(data.financialData.totalDebt)
+        totalDbt.textContent = `${dbtVal}`
+        const currRatio = document.getElementById("currentRatio")
+        currRatio.textContent = `${data.financialData.currentRatio}`
+
+        const totalRevenue = document.getElementById("totalRev")
+        const revVal = formatCurrency(data.financialData.totalRevenue)
+        totalRevenue.textContent = `${revVal}`
+
+        const rps = document.getElementById("revPerShare")
+        const rpsVal = formatCurrency(data.financialData.revenuePerShare)
+        rps.textContent = `${rpsVal}`
+
+        const revGrwth = document.getElementById("revenueGrowth")
+        revGrwth.textContent = `${Number(data.financialData.revenueGrowth) * 100}%`
+
+        const gp = document.getElementById("grossProfit")
+        const gpVal = formatCurrency(data.financialData.grossProfits)
+        gp.textContent = `${gpVal}`
+
+        const gpm = document.getElementById("grossMargin")
+        gpm.textContent = `${data.financialData.grossMargins}`
+
+        const ebitda = document.getElementById("ebitda")
+        const ebitdaVal = formatCurrency(data.financialData.ebitda)
+        ebitda.textContent = `${ebitdaVal}`
+
+        const earngsGrwth = document.getElementById("earningsGrowth")
+        earngsGrwth.textContent = `${Number(data.financialData.earningsGrowth) * 100}%`
+
+        const profMarg = document.getElementById("profitMargin")
+        profMarg.textContent = `${Number(data.financialData.profitMargins) * 100}%`
+
+        const stockBeta = document.getElementById("stockBeta")
+        stockBeta.textContent = `${(data.summaryDetail.marketCap).toFixed(2)}`
+
+        const analystRec = document.getElementById("analystRec")
+        analystRec.textContent = `${data.financialData.recommendationKey}`
+      })
+
+      
+      createPortfolioBtn.addEventListener("click", async()=>{
+        const portfolioTickers = document.getElementsByName("portfolioTicker")
+        const values = [...portfolioTickers].map(input => input.value);
+        const response = await fetch(`/historicalStockData`, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({prods: values})
+        })
+        const data = await response.json()
+        console.log(data)
+        const portfolioWeights = data.optimal
+        const companies = data.parameters
+        const portfolioDiv = document.createElement("div")
+        for(let i = 0; companies.length; i++){
+            const companyTicker = companies[i]
+            const companyWeight = portfolioWeights[i]
+            const portfolioText = `${companyTicker} weight: ${(Number(companyWeight)*100).toFixed(2)}%`
+            const p = document.createElement('p');
+            p.textContent = portfolioText
+            portfolioDiv.appendChild(p)
+        }
+        document.getElementById("portfolioTickerDiv").appendChild(portfolioDiv)
+      })
+
+    function createBudgetPdf(totalIncome, totalexpenses, savings, surplus, incomeToExpensesRatio, surplusDeficitRatio, savingsToGoalRatio){
+        pdfMake.fonts ={
+            Lato:{
+                normal: "https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/fonts/lato-normal/lato-normal.woff",
+                bold: "https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/fonts/lato-semibold/lato-semibold.woff",
+                italics: "https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/fonts/lato-thin-italic/lato-thin-italic.woff",
+                bolditalics: "https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/fonts/lato-semibold-italic/lato-semibold-italic.woff"
+            }
+        }
+        var docDefinition = {
+            content: [
+                {
+                    text: 'Budget Summary',
+                    margin: [ 5, 2, 10, 25 ],
+                    style: 'budgetHeader'
+                },
+                {
+                columns:[{
+                        // auto-sized columns have their widths based on their content
+                        width: '60%',
+                        text: 'Total Income',
+                        margin: 7.5,
+                        style:'budgetDetail'
+                    },
+                    {
+                        // star-sized columns fill the remaining space
+                        // if there's more than one star-column, available width is divided equally
+                        width: '40%',
+                        text: `${formatCurrency(totalIncome)}`,
+                        margin: 7.5,
+                        style: 'budgetValue'
+                    },
+                ],
+                    // optional space between columns
+                    columnGap: 10
+                },
+                {
+                columns:[{
+                        // auto-sized columns have their widths based on their content
+                        width: '60%',
+                        text: 'Expense Total',
+                        margin: 7.5,
+                        style:'budgetDetail'
+                    },
+                    {
+                        // star-sized columns fill the remaining space
+                        // if there's more than one star-column, available width is divided equally
+                        width: '40%',
+                        text: `${formatCurrency(totalexpenses)}`,
+                        margin: 7.5,
+                        style: 'budgetValue'
+                        
+                    },
+                ],
+                    // optional space between columns
+                    columnGap: 10
+                },
+                {
+                    columns:[{
+                        // auto-sized columns have their widths based on their content
+                        width: '60%',
+                        text: 'Surplus/Deficit',
+                        margin: 7.5,
+                        style:'budgetDetail'
+                    },
+                    {
+                        // star-sized columns fill the remaining space
+                        // if there's more than one star-column, available width is divided equally
+                        width: '40%',
+                        text: `${formatCurrency(surplus)}`,
+                        margin: 7.5,
+                        style: `${surplus > 0 ? 'highlightValue':'highlightValueNeg'}`
+                    },
+                ],
+                    // optional space between columns
+                    columnGap: 10
+
+                },
+                {
+                    columns:[{
+                        // auto-sized columns have their widths based on their content
+                        width: '60%',
+                        text: 'Expense to Income',
+                        margin: 7.5,
+                        style:'budgetDetail'
+                    },
+                    {
+                        // star-sized columns fill the remaining space
+                        // if there's more than one star-column, available width is divided equally
+                        width: '40%',
+                        text: `${(incomeToExpensesRatio).toFixed(2)}%`,
+                        margin: 7.5,
+                        style: `${incomeToExpensesRatio > 0.7 ?  'highlightValueNeg':'highlightValue'}`
+                    },
+                ],
+                    // optional space between columns
+                    columnGap: 10
+
+                },
+                {
+                    columns:[{
+                        // auto-sized columns have their widths based on their content
+                        width: '60%',
+                        text: 'Surplus/Deficit to Income Ratio',
+                        margin: 7.5,
+                        style:'budgetDetail'
+                    },
+                    {
+                        // star-sized columns fill the remaining space
+                        // if there's more than one star-column, available width is divided equally
+                        width: '40%',
+                        text: `${(surplusDeficitRatio * 100).toFixed(2)}%`,
+                        margin: 7.5,
+                        style: `${surplusDeficitRatio < 0 ? 'highlightValueNeg':'highlightValue'}`
+                    },
+                ],
+                    // optional space between columns
+                    columnGap: 10
+
+                },
+                {
+                columns:[{
+                        // auto-sized columns have their widths based on their content
+                        width: '60%',
+                        text: 'Savings',
+                        margin: 7.5,
+                        style:'budgetDetail'
+                    },
+                    {
+                        // star-sized columns fill the remaining space
+                        // if there's more than one star-column, available width is divided equally
+                        width: '40%',
+                        text: `${formatCurrency(savings)}`,
+                        margin: 7.5,
+                        style: 'budgetValue'
+                    },
+                ],
+                    // optional space between columns
+                    columnGap: 10
+                },
+                {
+                    columns:[{
+                        // auto-sized columns have their widths based on their content
+                        width: '60%',
+                        text: 'Actual Savings to Goal Ratio',
+                        margin: 7.5,
+                        style:'budgetDetail'
+                    },
+                    {
+                        // star-sized columns fill the remaining space
+                        // if there's more than one star-column, available width is divided equally
+                        width: '40%',
+                        text: `At ${(savingsToGoalRatio * 100).toFixed(2)}% of goal`,
+                        margin: 7.5,
+                        style: `${savingsToGoalRatio < 1 ? 'highlightValueNeg':'highlightValue'}`
+                    },
+                ],
+                    // optional space between columns
+                    columnGap: 10
+
+                },
+                {
+                    text: 'Income to expense ration tells you what portion/percentage of your total income goes to expenses.',
+                    margin: [ 5, 2, 15, 15 ],
+                    style: 'budgetDisclaimer'
+                },
+                {
+                    text: 'Surplus/Defcit to Income Ratio measures by what percentage your over/under your budget.',
+                    margin: [ 5, 2, 15, 15 ],
+                    style: 'budgetDisclaimer'
+                },
+                {
+                    text: 'Actual Savings to Goal Rato measures by what percentage you are currently off/away from your saving goal.',
+                    margin: [ 5, 2, 15, 15 ],
+                    style: 'budgetDisclaimer'
+                },
+
+            ],
+            defaultStyle: {
+                font: 'Lato'
+            },
+            styles: {
+                budgetDetail: {
+                    fontSize: 16,
+                    bold: true,
+                    color: '#03256C'
+                },
+                budgetValue:{
+                    fontSize: 16,
+                    alignment: 'justify',
+                    color: '#03256C'
+                },
+                budgetHeader:{
+                    fontSize: 25.88,
+                    alignment: 'center',
+                    color: '#03256C',
+                    bold: true,
+                    decoration: 'underline',
+                    decorationColor: '#03256C',
+                    decorationStyle: 'double'
+                },
+                highlightValue:{
+                    fontSize: 16,
+                    alignment: 'justify',
+                    color: '#03256C',
+                    bold: true
+                },
+                highlightValueNeg:{
+                    fontSize: 16,
+                    alignment: 'justify',
+                    color: '#EE4949',
+                    bold: true
+                },
+                budgetDisclaimer:{
+                    fontSize: 10,
+                    alignment: 'justify',
+                    color: '#2191FB',
+                }
+            }
+        }
+        pdfMake.createPdf(docDefinition).download('MyBudget.pdf');
+      }
+    //const data = 'Hello, world!';
+    //const pdfBlob = await createPDF(data);
+    //const link = document.createElement('a');
+    //link.href = pdfUrl;
+    //link.download = 'my-pdf.pdf';
+    //document.body.appendChild(link);
+    //link.click();
+
+    function createIncomeStatementPdf(companyName, totalRevenue, cogs, grossProfit, operatingExpenses, operatingIncome, taxExp, netProfit, netMargin, operatingMarg, grossMarg){
+        pdfMake.fonts ={
+            Lato:{
+                normal: "https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/fonts/lato-normal/lato-normal.woff",
+                bold: "https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/fonts/lato-semibold/lato-semibold.woff",
+                italics: "https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/fonts/lato-thin-italic/lato-thin-italic.woff",
+                bolditalics: "https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/fonts/lato-semibold-italic/lato-semibold-italic.woff"
+            }
+        }
+        var documentDefinition ={
+            content:[
+            {
+                text: `${companyName}`,
+                margin: [ 5, 2, 10, 25 ],
+                style: 'statmentTitle'
+            },
+            {
+                text: 'Income Statement',
+                margin: [ 5, 2, 10, 25 ],
+                style: 'statmentType'
+            },
+            {
+                columns:[{
+                    width: '60%',
+                    text: 'Total Revenue',
+                    margin: 7.5,
+                    style:'statementDetail'
+                },
+                {
+                    width: '40%',
+                    text: `${formatCurrency(totalRevenue)}`,
+                    margin: 7.5,
+                    style: 'statementValue'
+
+                }],
+                columnGap: 10
+            },
+            {
+                columns:[{
+                    width: '60%',
+                    text: 'Cost of Goods Sold',
+                    margin: 7.5,
+                    style:'statementDetail'
+                },
+                {
+                    width: '40%',
+                    text: `${formatCurrency(cogs)}`,
+                    margin: 7.5,
+                    style: 'statementValue'
+
+                }],
+                columnGap: 10
+            },
+            {
+                columns:[{
+                    width: '60%',
+                    text: 'Gross Income',
+                    margin: 7.5,
+                    style:'statementDetail'
+                },
+                {
+                    width: '40%',
+                    text: `${grossProfit}`,
+                    margin: 7.5,
+                    style: 'statementValue'
+
+                }],
+                columnGap: 10
+            },
+            {
+                columns:[{
+                    width: '60%',
+                    text: 'Operating Expenses',
+                    margin: 7.5,
+                    style:'statementDetail'
+                },
+                {
+                    width: '40%',
+                    text: `${formatCurrency(operatingExpenses)}`,
+                    margin: 7.5,
+                    style: 'statementValue'
+
+                }],
+                columnGap: 10
+            },
+            {
+                columns:[{
+                    width: '60%',
+                    text: 'Operating Income',
+                    margin: 7.5,
+                    style:'statementDetail'
+                },
+                {
+                    width: '40%',
+                    text: `${operatingIncome}`,
+                    margin: 7.5,
+                    style: 'statementValue'
+
+                }],
+                columnGap: 10
+            },
+            {
+                columns:[{
+                    width: '60%',
+                    text: 'Tax Expense',
+                    margin: 7.5,
+                    style:'statementDetail'
+                },
+                {
+                    width: '40%',
+                    text: `${formatCurrency(taxExp)}`,
+                    margin: 7.5,
+                    style: 'statementValue'
+
+                }],
+                columnGap: 10
+            },
+            {
+                columns:[{
+                    width: '60%',
+                    text: 'Net Income',
+                    margin: 7.5,
+                    style:'statementDetail'
+                },
+                {
+                    width: '40%',
+                    text: `${netProfit}`,
+                    margin: 7.5,
+                    style: 'statementValue'
+
+                }],
+                columnGap: 10
+            },
+            {
+                text: `Net margin - ${netMargin}%`,
+                margin: [ 5, 2, 30, 15 ],
+                style: 'statementRatio'
+            },
+            {
+                text: 'The net margin ratio measures how much net income or profit is generated as a percentage of Revenue.',
+                margin: [ 5, 2, 15, 15 ],
+                style: 'ratioDescription'
+            },
+            {
+                text: `Operating margin - ${operatingMarg}%`,
+                margin: [ 5, 2, 15, 15 ],
+                style: 'statementRatio'
+            },
+            {
+                text: 'The operating margin measures the ratio of operating income to net sales usually expressed as a percentage.',
+                margin: [ 5, 2, 15, 15 ],
+                style: 'ratioDescription'
+            },
+            {
+                text: `Gross margin - ${grossMarg}%`,
+                margin: [ 5, 2, 15, 15 ],
+                style: 'statementRatio'
+            },
+            {
+                text: 'The operating margin measures the ratio of operating income to net sales usually expressed as a percentage.',
+                margin: [ 5, 2, 15, 15 ],
+                style: 'ratioDescription'
+            }],
+            defaultStyle:{
+                font: 'Lato'
+            },
+            styles: {
+                statmentTitle:{
+                    fontSize: 19.416,
+                    bold: true,
+                    color: '#03256C',
+                    alignment: 'center',
+                },
+                statmentType:{
+                    fontSize: 12,
+                    color: '#03256C',
+                    alignment: 'center',
+                },
+                statementDetail:{
+                    fontSize: 12,
+                    color: '#000000',
+                    alignment: 'justify',  
+                },
+                statementValue:{
+                    fontSize: 12,
+                    alignment: 'justify',
+                    color: '#03256C',
+                    bold: true,
+                },
+                statementRatio:{
+                    fontSize: 10,
+                    color: '#2191FB',
+                },
+                ratioDescription:{
+                    fontSize: 10,
+                    color: '#2191FB',
+                }
+            }
+        }
+        pdfMake.createPdf(documentDefinition).download('IncomeStatement.pdf')
+    }
+    </script>
+</body>
+</html>
