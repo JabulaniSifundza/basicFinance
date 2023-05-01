@@ -789,6 +789,7 @@
             body: JSON.stringify({ticker: profileStockTicker})
         })
         const data = await response.json()
+        console.log(data)
         const mrktCapSpan = document.getElementById("marketCap")
         const mrktCapVal = formatCurrency(data.summaryDetail.marketCap)
         mrktCapSpan.textContent = `${mrktCapVal}`
