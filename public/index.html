@@ -830,7 +830,7 @@
         gp.textContent = `${gpVal}`
 
         const gpm = document.getElementById("grossMargin")
-        gpm.textContent = `${data.financialData.grossMargins}`
+        gpm.textContent = `${Number(data.financialData.grossMargins) * 100}%`
 
         const ebitda = document.getElementById("ebitda")
         const ebitdaVal = formatCurrency(data.financialData.ebitda)
