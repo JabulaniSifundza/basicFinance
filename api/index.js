@@ -11,6 +11,18 @@ app.use(express.json())
 app.use(express.static('public'));
 // Set the index.html file as the homepage
 app.use('/', financialInfo)
+
+app.post('/api/armortize',  (req, res) => {
+  const { loanAmount, interestRate, loanPeriod } = req.query;
+  try{
+      const finance = new Finance();
+      const result = finance.AM(loanAmount, loanPeriod, interestRate);
+      res.status(200).json(result);
+  }
+  catch(err){
+      res.status(500).json({error: err})
+  }
+})
 // Start the server
 app.listen(3000, () => {
   console.log('Server started on port 3000');

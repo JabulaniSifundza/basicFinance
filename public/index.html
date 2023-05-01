@@ -580,7 +580,7 @@
         const amortizeLoanAmnt = document.getElementById("loanAmount").value;
         const amortizeLoanIntrst = document.getElementById("amortizeLoanIntrst").value;
         const amortizeMonthSlider = document.getElementById("month-slider").value;
-        const response = await fetch(`/loan-armotization?loanAmount=${amortizeLoanAmnt}&interestRate=${amortizeLoanIntrst}&loanPeriod=${amortizeMonthSlider}`, {
+        const response = await fetch(`/api/armortize?loanAmount=${amortizeLoanAmnt}&interestRate=${amortizeLoanIntrst}&loanPeriod=${amortizeMonthSlider}`, {
             method: 'POST'
         })
         const data = await response.json()
