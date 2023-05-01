@@ -595,7 +595,7 @@
         const percentageCompound = document.getElementById("percentageCompound").value;
         const compoundingPeriod = document.getElementById("compounding-period").value;
         const compoundRemaining = document.getElementById("remaining-period").value;
-        const response =  await fetch(`/compoundInterest`, {
+        const response =  await fetch(`/api/compound`, {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json'
@@ -638,7 +638,7 @@
         const expenseTotals = Array.from(budgetExpense).reduce((acc, expense)=> acc + Number(expense.value), 0)
 
         try{
-            const response = await fetch(`http://localhost:3000/budgetCalculations`,{
+            const response = await fetch(`/api/budget`,{
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json'
@@ -682,7 +682,7 @@
         //const taxExpense = Number(operatingProf) * 0.21
         //netProf = Number(operatingProf) - Number(incomeStateIntrstExp + incomeStateDepreciate + taxExpense)
 
-        const response = await fetch(`/accountingCalculations`, {
+        const response = await fetch(`/api/incomestate`, {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json'
@@ -709,7 +709,7 @@
         const cagrStart = document.getElementById("CAGRstartVal").value;
         const cagrEnd = document.getElementById("CAGRendVal").value;
         const cagrPeriods = document.getElementById("cagrPeriods").value;
-        const response = await fetch(`/cagr`, {
+        const response = await fetch(`/api/cagr`, {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json'
@@ -724,7 +724,7 @@
       calculateRoi.addEventListener("click", async()=>{
         const roiInitialAmnt = document.getElementById("roiInitialAmnt").value;
         const roiEarnings = document.getElementById("roiEarnings").value
-        const response = await fetch(`/roi`, {
+        const response = await fetch(`/api/roi`, {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json'
@@ -742,7 +742,7 @@
       calculateDf.addEventListener("click", async()=>{
         const dfRate = document.getElementById("DfRate").value
         const dfPeriods = document.getElementById("dfPeriods").value
-        const response = await fetch(`/discountFactor`, {
+        const response = await fetch(`/api/df`, {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json'
@@ -781,7 +781,7 @@
 
       getCompanyProfileBtn.addEventListener("click", async()=>{
         const profileStockTicker = document.getElementById("profileStockTicker").value
-        const response = await fetch(`/investment-calculations`, {
+        const response = await fetch(`/api/profile`, {
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json'
