@@ -1,5 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const Finance = require('financejs');
+const { PDFDocument } = require('pdf-lib');
+const fs = require('fs');
+const yahooFinance = require('yahoo-finance');
 const app = express();
 app.use(bodyParser.json());
 const financialInfo = require('../routes/financial')
