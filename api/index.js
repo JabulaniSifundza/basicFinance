@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
-const financialInfo = require('./routes/financial')
+const financialInfo = require('../routes/financial')
 //parse form data 
 app.use(bodyParser.urlencoded({ extended: true }));
 //parse JSON data
