@@ -192,9 +192,12 @@
                 </p>
                 <div class="loanDetails">
                     <input type="number" id="CAGRstartVal" step="0.01" placeholder="Initial Value">
+                    <span id="cagrPrincipal"></span>
                     <input type="number" id="CAGRendVal" step="0.01" placeholder="Last Value">
+                    <span id="cagrReturnVal"></span>
                     <label for="month-slider">Periods:</label>
                     <input type="range" id="cagrPeriods" min="0" max="60" step="1">
+                    <span id="cagrPeriodsVal"></span>
                     <button id="calculateCagr">Calculate CAGR</button>
 
 
@@ -214,7 +217,9 @@
                 </p>
                 <div class="loanDetails">
                     <input type="number" id="roiInitialAmnt" step="0.01" placeholder="Initial Investment">
+                    <span id="roiEntered"></span>
                     <input type="number" id="roiEarnings" step="0.01" placeholder="Earnings Total">
+                    <span id="roiReceivedAmnt"></span>
                     <button id="calculateROI">Calculate ROI</button>
 
                      <div>
@@ -230,7 +235,7 @@
                     Calculate DF
                 </p>
                 <div class="loanDetails">
-                <input type="number" id="DfRate" step="0.01" placeholder="Interest Rate">
+                <input type="number" id="DfRate" step="0.01" placeholder="Interest Rate(%)">
                 <label for="month-slider">Periods:</label>
                 <input type="range" id="dfPeriods" min="0" max="60" step="1">
                 <button id="calculateDf">Calculate Discount Factor</button>
@@ -580,6 +585,102 @@
             monthValue.textContent = "";
         }  
     });
+
+    const cagrPrincipalAmnt = document.getElementById("CAGRstartVal")
+    const cagrPrincipalInpt = doecument.getElementById("cagrPrincipal")
+    const cagrRetAmnt = document.getElementById("CAGRendVal")
+    const cagrRetAmntInpt = document.getElementById("cagrReturnVal")
+    const cagrPeriod = document.getElementById("cagrPeriods")
+    const cagrPeriodVal = document.getElementById("cagrPeriodsVal")
+
+    cagrPrincipalAmnt.addEventListener("input", ()=>{
+        const val = parseFloat(cagrPrincipalAmnt.value)
+        if(!isNaN(val)){
+            const formatted = formatCurrency(val)
+            cagrPrincipalInpt.textContent = formatted
+        }
+        else{
+            cagrPrincipalInpt.textContent = "";
+        }
+    })
+
+    cagrRetAmnt.addEventListener("input", ()=>{
+        const val = parseFloat(cagrRetAmnt.value)
+        if(!isNaN(val)){
+            const formatted = formatCurrency(val)
+            cagrRetAmntInpt.textContent = formatted
+        }
+        else{
+            cagrRetAmntInpt.textContent = "";
+        }
+    })
+
+
+
+    cagrPeriod.addEventListener("input", (event)=>{
+        const value = event.target.value;
+        if(value > 0){
+            cagrPeriodVal.textContent = `${value} periods`;
+        }
+        else if(value === 1){
+            cagrPeriodVal.textContent = `${value} period`;
+        }
+        else{
+            cagrPeriodVal.textContent = "";
+        } 
+    })
+
+    const roiPrincipal = document.getElementById("roiInitialAmnt")
+    const roiEntered = document.getElementById("roiEntered")
+    const roiReceived = document.getElementById("roiEarnings")
+    const roiReceivedAmnt = document.getElementById("roiReceivedAmnt")
+    
+    roiPrincipal.addEventListener("input", ()=>{
+        const val = parseFloat(roiPrincipal.value)
+        if(!isNaN(val)){
+            const formatted = formatCurrency(val)
+            roiEntered.textContent = formatted
+        }
+        else{
+            roiEntered.textContent = "";
+        }
+    })
+
+    roiReceived.addEventListener("input", ()=>{
+        const val = parseFloat(roiReceived.value)
+        if(!isNaN(val)){
+            const formatted = formatCurrency(val)
+            roiReceivedAmnt.textContent = formatted
+        }
+        else{
+            roiReceivedAmnt.textContent = "";
+        }
+    })
+
+
+
+
+
+
+
+
+    const dfRatePeriods = document.getElementById("DfRate")
+    const dfRatePeriodAmnt = document.getElementById("dfRatePeriodAmnt")
+     dfRatePeriods.addEventListener("input", (event)=>{
+        const value = event.target.value;
+        if(value > 0){
+            dfRatePeriodAmnt.textContent = `${value} periods`;
+        }
+        else if(value === 1){
+            dfRatePeriodAmnt.textContent = `${value} period`;
+        }
+        else{
+            dfRatePeriodAmnt.textContent = "";
+        } 
+    })
+
+
+
 
 
 
