@@ -807,7 +807,7 @@
         fcf.textContent = `${fcfVal}`
         const cps = document.getElementById("cashPerShare")
         const cpsVal = formatCurrency(data.financialData.totalCashPerShare)
-        cps.textDecoration = `${cpsVal}`
+        cps.textContent= `${cpsVal}`
         const totalDbt = document.getElementById("totalDebt")
         const dbtVal = formatCurrency(data.financialData.totalDebt)
         totalDbt.textContent = `${dbtVal}`
@@ -843,7 +843,7 @@
         profMarg.textContent = `${Number(data.financialData.profitMargins) * 100}%`
 
         const stockBeta = document.getElementById("stockBeta")
-        stockBeta.textContent = `${(data.summaryDetail.marketCap).toFixed(2)}`
+        stockBeta.textContent = `${(data.summaryDetail.beta).toFixed(2)}`
 
         const analystRec = document.getElementById("analystRec")
         analystRec.textContent = `${data.financialData.recommendationKey}`
