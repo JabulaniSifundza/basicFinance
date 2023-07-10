@@ -4,6 +4,7 @@ const Finance = require('financejs');
 const { PDFDocument } = require('pdf-lib');
 const fs = require('fs');
 const yahooFinance = require('yahoo-finance');
+const nodemailer = require('nodemailer');
 const app = express();
 app.use(bodyParser.json());
 const financialInfo = require('../routes/financial')
@@ -15,6 +16,17 @@ app.use(express.json())
 app.use(express.static('public'));
 // Set the index.html file as the homepage
 app.use('/', financialInfo)
+
+const app_email = 'admin@setthetable.app'
+const app_pass = 'eamjfkonjezpsybj'
+
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: app_email,
+        pass: app_pass
+    }
+})
 
 app.post('/api/armortize',  (req, res) => {
   const { loanAmount, interestRate, loanPeriod } = req.query;
@@ -120,6 +132,27 @@ app.post('/api/profile', (req, res)=>{
   catch(err){
       res.status(500).json({error: err})
   }
+})
+
+app.post('/api/mailer', async(req, res)=>{
+    const {name, email, message} = req.body;
+    try{
+        const mailOptions = {
+            from: app_email,
+            to: email,
+            subject: 'New Message from ' + name,
+            text: message
+        }
+        await transporter.sendMail(mailOptions)
+        res.status(200).json({message: 'Email sent'})
+    }
+    catch(err){
+        console.log(err)
+        res.status(500).json(err)
+    
+    }
+
+
 })
 // Start the server
 app.listen(3000, () => {
