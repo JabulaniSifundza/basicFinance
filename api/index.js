@@ -139,7 +139,8 @@ app.post('/api/mailer', async(req, res)=>{
     try{
         const mailOptions = {
             from: "Set The Table",
-        subject: 'New Message from Set The Table',
+            to: email,
+            subject: 'New Message from Set The Table',
             html: `<head>
                     <meta charset="UTF-8">
                     <meta http-equiv="X-UA-Compatible" content="IE=edge">
