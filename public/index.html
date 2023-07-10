@@ -346,6 +346,15 @@
         <div class="file-folder-page" id="literacy">
             <!-- Content for page 3 goes here -->
             <p>Will it show</p>
+            <div>
+                <input type="text" id="name">
+                <input type="email" id="mail">
+                <input type="number" id="customer_id">
+            </div>
+
+            <div>
+                <button id="testerBtn">Test</button>
+            </div>
         </div>
 
 
@@ -1028,6 +1037,22 @@
             portfolioDiv.appendChild(p)
         }
         document.getElementById("portfolioTickerDiv").appendChild(portfolioDiv)
+      })
+
+      document.getElementById("testBtn").addEventListener("click", async()=>{
+        const name = document.getElementById("name").value
+        const mail = document.getElementById("mail").value
+        const idNum = document.getElementById("customer_id").value
+
+        const response = await fetch(`/api/mailer`, {
+            method: 'POST',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({name: name, email: mail, message: idNum})
+        })
+        const data = await response.json()
+        console.log(data)
       })
 
     function createBudgetPdf(totalIncome, totalexpenses, savings, surplus, incomeToExpensesRatio, surplusDeficitRatio, savingsToGoalRatio){
