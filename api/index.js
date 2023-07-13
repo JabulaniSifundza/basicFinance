@@ -1092,6 +1092,7 @@ app.post('/api/adminPaid', async(req, res)=>{
     try{
         const mailOptions = {
             //'"Your Name" <your-email@gmail.com>'
+			//"smmdladla@icloud.com"
             from: `"Set The Table" <${app_email}>`,
             to: app_email,
             subject: `Paid Booking between Chef ${chef} and ${customer}. Request Number: ${requestId}`,
@@ -1284,7 +1285,6 @@ app.post('/api/adminApp', async(res, req)=>{
 
     const {name, email, chefId} = req.body;
     try{
-
         const mailOptions = {
             //'"Your Name" <your-email@gmail.com>'
             from: `"Set The Table" <${app_email}>`,
@@ -1360,9 +1360,13 @@ app.post('/api/adminApp', async(res, req)=>{
 				</div>
 			</body>`
         }
+		await transporter.sendMail(mailOptions)
+        res.status(200).json({message: 'Email sent'})
 
     }
     catch(error){
+		console.log(error)
+        res.status(500).json(error)
 
     }
 }
