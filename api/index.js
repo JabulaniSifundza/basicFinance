@@ -710,7 +710,7 @@ const {name, email, requestId, date, revisions} = req.body;
             //'"Your Name" <your-email@gmail.com>'
             from: `"Set The Table" <${app_email}>`,
             to: email,
-            subject: `Booking Request Revisions. Request Number: ${requestId}`,
+			subject: `Booking Request Revisions for booking on ${date}. Request Number: ${requestId}`,
 			html: `<head>
 			<meta charset="UTF-8">
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
