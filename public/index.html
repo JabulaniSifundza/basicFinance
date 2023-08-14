@@ -943,63 +943,7 @@
         })
         const data = await response.json()
         console.log(data)
-        const mrktCapSpan = document.getElementById("marketCap")
-        const mrktCapVal = formatCurrency(data.summaryDetail.marketCap)
-        mrktCapSpan.textContent = `${mrktCapVal}`
-        const sharePriceSpn = document.getElementById("sharePrice")
-        const sharePriceVal = formatCurrency(data.summaryDetail.previousClose)
-        sharePriceSpn.textContent = `${sharePriceVal}`
-        const totalCashSpn = document.getElementById("totalCash")
-        const totalCashVal = formatCurrency(data.financialData.totalCash)
-        totalCashSpn.textContent = `${totalCashVal}`
-        const operatingCashflowSpn = document.getElementById("operatingCashflow")
-        const operatingCashflowVal = formatCurrency(data.financialData.operatingCashflow)
-        operatingCashflowSpn.textContent = `${operatingCashflowVal}`
-        const fcf = document.getElementById("freeCashFlow")
-        const fcfVal = formatCurrency(data.financialData.freeCashflow)
-        fcf.textContent = `${fcfVal}`
-        const cps = document.getElementById("cashPerShare")
-        const cpsVal = formatCurrency(data.financialData.totalCashPerShare)
-        cps.textContent= `${cpsVal}`
-        const totalDbt = document.getElementById("totalDebt")
-        const dbtVal = formatCurrency(data.financialData.totalDebt)
-        totalDbt.textContent = `${dbtVal}`
-        const currRatio = document.getElementById("currentRatio")
-        currRatio.textContent = `${data.financialData.currentRatio}`
-
-        const totalRevenue = document.getElementById("totalRev")
-        const revVal = formatCurrency(data.financialData.totalRevenue)
-        totalRevenue.textContent = `${revVal}`
-
-        const rps = document.getElementById("revPerShare")
-        const rpsVal = formatCurrency(data.financialData.revenuePerShare)
-        rps.textContent = `${rpsVal}`
-
-        const revGrwth = document.getElementById("revenueGrowth")
-        revGrwth.textContent = `${Number(data.financialData.revenueGrowth) * 100}%`
-
-        const gp = document.getElementById("grossProfit")
-        const gpVal = formatCurrency(data.financialData.grossProfits)
-        gp.textContent = `${gpVal}`
-
-        const gpm = document.getElementById("grossMargin")
-        gpm.textContent = `${Number(data.financialData.grossMargins) * 100}%`
-
-        const ebitda = document.getElementById("ebitda")
-        const ebitdaVal = formatCurrency(data.financialData.ebitda)
-        ebitda.textContent = `${ebitdaVal}`
-
-        const earngsGrwth = document.getElementById("earningsGrowth")
-        earngsGrwth.textContent = `${Number(data.financialData.earningsGrowth) * 100}%`
-
-        const profMarg = document.getElementById("profitMargin")
-        profMarg.textContent = `${Number(data.financialData.profitMargins) * 100}%`
-
-        const stockBeta = document.getElementById("stockBeta")
-        stockBeta.textContent = `${(data.summaryDetail.beta).toFixed(2)}`
-
-        const analystRec = document.getElementById("analystRec")
-        analystRec.textContent = `${data.financialData.recommendationKey}`
+        
       })
 
       
