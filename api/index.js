@@ -126,7 +126,7 @@ app.post('/api/profile', (req, res)=>{
           res.status(200).json(data)
       }).catch(err => {
           console.log(err)
-          res.status(500).json({error: err})
+      	res.status(500).json({error: err, msg: err.msg})
       })
   }
   catch(err){
