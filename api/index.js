@@ -120,13 +120,13 @@ app.post('/api/profile', (req, res)=>{
   const {ticker} = req.body;
   try{
       yahooFinance.quote({
-          symbol: ticker,
-          modules: ['financialData', 'summaryDetail']
+          	symbol: ticker,
+          	modules: ['financialData', 'summaryDetail']
       }).then(data => {
-          res.status(200).json(data)
+          	res.status(200).json(data)
       }).catch(err => {
-          console.log(err)
-      	res.status(500).json({error: err, msg: err.msg})
+          	console.log(err)
+      		res.status(500).json({error: err, msg: err.msg})
       })
   }
   catch(err){
