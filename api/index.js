@@ -4,6 +4,7 @@ const Finance = require('financejs');
 const { PDFDocument } = require('pdf-lib');
 const fs = require('fs');
 const yahooFinance = require('yahoo-finance');
+const yf2 = require('yahoo-finance2').default; 
 const nodemailer = require('nodemailer');
 const app = express();
 app.use(bodyParser.json());
@@ -116,23 +117,17 @@ app.post('/api/df', (req, res)=>{
   }
 })
 
-app.post('/api/profile', (req, res)=>{
+app.post('/api/profile', async(req, res)=>{
   const {ticker} = req.body;
   try{
-      yahooFinance.quote({
-          	symbol: ticker,
-          	modules: ['financialData', 'summaryDetail']
-      }).then(data => {
-          	res.status(200).json(data)
-      }).catch(err => {
-          	console.log(err)
-      		res.status(500).json({error: err, msg: err.msg})
-      })
+	const data = await yf2.quote(ticker);
+	res.status(200).json(data)
   }
   catch(err){
       res.status(500).json({error: err})
   }
 })
+
 
 app.post('/api/userWelcome', async(req, res)=>{
     const {name, email, message} = req.body;
