@@ -120,7 +120,8 @@ app.post('/api/df', (req, res)=>{
 app.post('/api/profile', async(req, res)=>{
   const {ticker} = req.body;
   try{
-	const data = await yahooFinance.quoteSummary(ticker);
+	const queryOptions = { modules: ['price', 'summaryDetail'] };
+	const data = await yahooFinance.quoteSummary(ticker, queryOptions);
 	res.status(200).json(data)
   }
   catch(error){
