@@ -123,8 +123,8 @@ app.post('/api/profile', async(req, res)=>{
 	const data = await yf2.quote(ticker);
 	res.status(200).json(data)
   }
-  catch(err){
-  res.status(500).json({error: err, "message": "Library updated"})
+  catch(error){
+  res.status(500).json({"error": error.name, "message": error.message})
   }
 })
 
