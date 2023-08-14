@@ -3,8 +3,8 @@ const bodyParser = require('body-parser');
 const Finance = require('financejs');
 const { PDFDocument } = require('pdf-lib');
 const fs = require('fs');
-const yahooFinance = require('yahoo-finance');
-const yf2 = require('yahoo-finance2').default; 
+//const yahooFinance = require('yahoo-finance');
+const yahooFinance = require('yahoo-finance2').default; 
 const nodemailer = require('nodemailer');
 const app = express();
 app.use(bodyParser.json());
@@ -120,11 +120,11 @@ app.post('/api/df', (req, res)=>{
 app.post('/api/profile', async(req, res)=>{
   const {ticker} = req.body;
   try{
-	const data = await yf2.quote(ticker);
+	const data = await yahooFinance.quote(ticker);
 	res.status(200).json(data)
   }
   catch(error){
-  res.status(500).json({"error": error.name, "message": error.message})
+  	res.status(500).json({"error": error.name, "message": error.message})
   }
 })
 
