@@ -945,9 +945,22 @@
         console.log(data)
         console.log(data.price.marketCap)
         document.getElementById("marketCap").textContent = data.price.marketCap
-        document.getElementById("sharePrice").textContent = data.summaryDetail.open
-        //document.getElementById("totalCash").textContent = data.summaryDetail.open
-        
+        document.getElementById("sharePrice").textContent = data.financialData.currentPrice
+        document.getElementById("totalCash").textContent = data.financialData.totalCash
+        document.getElementById("operatingCashflow").textContent = data.financialData.operatingCashflow
+        document.getElementById("freeCashFlow").textContent = data.financialData.freeCashflow
+        document.getElementById("cashPerShare").textContent = data.financialData.totalCashPerShare
+        document.getElementById("currentRatio").textContent = data.financialData.currentRatio
+        document.getElementById("totalDebt").textContent = data.financialData.totalDebt
+        document.getElementById("grossMargin").textContent = data.financialData.grossMargins
+        document.getElementById("totalRev").textContent = data.financialData.totalRevenue
+        document.getElementById("revPerShare").textContent = data.financialData.revenuePerShare
+        document.getElementById("grossProfit").textContent = data.financialData.grossProfits
+        document.getElementById("ebitda").textContent = data.financialData.ebitda
+        document.getElementById("earningsGrowth").textContent = data.financialData.earningsGrowth
+        document.getElementById("profitMargin").textContent = data.financialData.profitMargins
+        document.getElementById("analystRec").textContent = data.financialData.recommendationKey
+        document.getElementById("stockBeta").textContent = data.summaryDetail.beta        
       })
 
       
@@ -975,22 +988,6 @@
             portfolioDiv.appendChild(p)
         }
         document.getElementById("portfolioTickerDiv").appendChild(portfolioDiv)
-      })
-
-      document.getElementById("testerBtn").addEventListener("click", async()=>{
-        const name = document.getElementById("name").value
-        const mail = document.getElementById("mail").value
-        const idNum = document.getElementById("customer_id").value
-
-        const response = await fetch(`/api/mailer`, {
-            method: 'POST',
-            headers:{
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({name: name, email: mail, message: idNum})
-        })
-        const data = await response.json()
-        console.log(data)
       })
 
     function createBudgetPdf(totalIncome, totalexpenses, savings, surplus, incomeToExpensesRatio, surplusDeficitRatio, savingsToGoalRatio){
