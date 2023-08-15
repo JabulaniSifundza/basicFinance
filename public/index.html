@@ -943,6 +943,10 @@
         })
         const data = await response.json()
         console.log(data)
+        document.getElementById("marketCap").textContent = data.price.marketCap
+        document.getElementById("sharePrice").textContent = data.summaryDetail.open
+        //document.getElementById("totalCash").textContent = data.summaryDetail.open
+
         
       })
 
