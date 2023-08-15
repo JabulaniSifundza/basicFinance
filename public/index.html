@@ -312,7 +312,7 @@
                 <p>Gross Profit:</p>
                 <span id="grossProfit"></span>
                 <p>Gross Margin:</p>
-                <span id="grossMargin"></span>
+                <span id="grossMarginProfile"></span>
                 <p>EBITDA:</p>
                 <span id="ebitda"></span>
                 <p>Earnings Growth:</p>
@@ -952,7 +952,6 @@
         document.getElementById("cashPerShare").textContent = formatCurrency(data.financialData.totalCashPerShare)
         document.getElementById("currentRatio").textContent = data.financialData.currentRatio
         document.getElementById("totalDebt").textContent = formatCurrency(data.financialData.totalDebt)
-        document.getElementById("grossMargin").textContent = data.financialData.grossMargins
         document.getElementById("totalRev").textContent = formatCurrency(data.financialData.totalRevenue)
         document.getElementById("revPerShare").textContent = formatCurrency(data.financialData.revenuePerShare)
         document.getElementById("grossProfit").textContent = formatCurrency(data.financialData.grossProfits)
@@ -962,7 +961,7 @@
         document.getElementById("analystRec").textContent = data.financialData.recommendationKey
         document.getElementById("stockBeta").textContent = data.summaryDetail.beta
         document.getElementById("revenueGrowth").textContent = data.financialData.revenueGrowth
-        document.getElementById("grossMargin").textContent = data.financialData.grossMargins        
+        document.getElementById("grossMarginProfile").textContent = data.financialData.grossMargins        
       })
 
       
