@@ -1458,6 +1458,239 @@ const {name, email, message} = req.body;
         res.status(500).json(err)
     }
 })
+
+
+
+app.post('/api/chefBlast', async(req, res)=>{
+	try{
+		const {chef_emails, customer_name, booking_address, booking_date, budget_amount, desired_cuisine, restrictions, number_of_guests} = req.body;
+		const list_of_food = (array_of_food)=>{
+			let list_items = ''
+			array_of_food.map((item)=>{
+				list_items += `<li>${item}</li>`
+			})
+			return `<ul>${list_items}</ul>`;
+
+		}
+		const list_of_allergens = (array_of_allergens)=>{
+			let list_items = ''
+			array_of_allergens.map((item)=>{
+				list_items += `<li>${item}</li>`
+			})
+			return `<ul>${list_items}</ul>`;
+		}
+
+		chef_emails.map(async(email)=>{
+			const mailOptions = {
+					//'"Your Name" <your-email@gmail.com>'
+					from: `"Set The Table" <${app_email}>`,
+					to: email,
+					subject: `${customer_name} has requested a menu proposal from you!`,
+					html:`<head>
+					<meta charset="UTF-8">
+					<meta http-equiv="X-UA-Compatible" content="IE=edge">
+					<meta name="viewport" content="width=device-width, initial-scale=1.0">
+					<title>Menu Request from ${customer_name}</title>
+					<style>
+						@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+					</style>
+				</head>
+				<body>
+					<div>
+						<table
+						style="width: 100%; 
+						height: 300px;
+						background-color: #FFFFFF;
+						margin-left: auto;
+						margin-right: auto">
+							<tr>
+								<td style="text-align: center;">
+									<img src="https://firebasestorage.googleapis.com/v0/b/setthetable-app.appspot.com/o/sttLogo.png?alt=media&token=9ee37110-cdb1-4722-99cb-950499aa0750" alt="Set The Table Logo"
+									style="
+									width: 300px;
+									height: 300px;
+									cursor: pointer;
+									margin-bottom: 20px;">
+								</td>
+							</tr>
+						</table>
+						<h4 style="font-size: 32px;
+						font-family: Roboto, Arial, sans-serif;
+						text-align: center;
+						margin-bottom: 38px;">Please create a menu proposal for ${customer_name}</h4>
+						<p style="font-size: 19.8px; font-family: Roboto, Arial, sans-serif;">
+						${customer_name} is hosting an event on ${booking_date} at ${booking_address}. They are expecting ${number_of_guests}.
+						<br>
+						The budget for your proposal is ZAR ${budget_amount}.00 .
+						<br>
+						<br>
+						Their desired menu:
+						${list_of_food(desired_cuisine)}
+						<br>
+						Allergens:
+						${list_of_allergens(restrictions)}
+						</p>
+						<p style="font-family: Roboto, Arial, sans-serif;font-size: 19.8px; margin-bottom: 30px;">In the meantime, you can view the latest Chefs added to our gallery as an example.</p>
+						<a href="https://setthetable.app/app/chefLogin.html"
+						style="height: 60.8px; 
+						width: 132.6px;
+						text-decoration: none;
+						color: #FFFFFF;
+						background-color: #348C31;
+						box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+						font-family: Roboto, Arial, sans-serif;
+						padding: 16px;
+						font-size: 19.8px; 
+						border-radius: 12px;
+						margin-top: 30px;
+						margin-bottom: 40px;">Create Proposal</a>
+						<p style="font-size: 19.8px; 
+						font-family: Roboto, Arial, sans-serif; margin-top: 30px;">Thank you for choosing Set The Table.</p>
+						<p style="font-size: 19.8px; 
+						font-family: Roboto, Arial, sans-serif;text-align: center; margin-top: 60px;">Set the Table; <span style="color: #348C31">serve a memory.</span></p>
+						<div style="background-color: #000000; height: 100px; width: 100%;">
+							<a href="https://setthetable.app/termsAndConditions.html"
+							style="color: #FFFFFF;
+							text-decoration: none;
+							margin-top: 30px;
+							width: 80%;
+							font-family: Roboto, Arial, sans-serif;
+							padding: 10px;
+							padding-top: 30px;
+							font-size: 19.8px;
+							margin-left: auto;
+							margin-right: auto;">
+								Terms
+							</a>
+						</div>
+					</div>
+				</body>`
+			}
+			await transporter.sendMail(mailOptions)
+		})
+		res.status(200).json({message: 'Email sent'})
+	}
+	catch(err){
+		res.status(500).json(err)
+	}
+
+})
+
+app.post('/api/catererBlast', async(req, res)=>{
+	try{
+		const {chef_emails, customer_name, booking_address, booking_date, budget_amount, desired_cuisine, restrictions, number_of_guests} = req.body;
+		const list_of_food = (array_of_food)=>{
+			let list_items = ''
+			array_of_food.map((item)=>{
+				list_items += `<li>${item}</li>`
+			})
+			return `<ul>${list_items}</ul>`;
+
+		}
+		const list_of_allergens = (array_of_allergens)=>{
+			let list_items = ''
+			array_of_allergens.map((item)=>{
+				list_items += `<li>${item}</li>`
+			})
+			return `<ul>${list_items}</ul>`;
+		}
+
+		chef_emails.map(async(email)=>{
+			const mailOptions = {
+					//'"Your Name" <your-email@gmail.com>'
+					from: `"Set The Table" <${app_email}>`,
+					to: email,
+					subject: `${customer_name} has requested a menu proposal from you!`,
+					html:`<head>
+					<meta charset="UTF-8">
+					<meta http-equiv="X-UA-Compatible" content="IE=edge">
+					<meta name="viewport" content="width=device-width, initial-scale=1.0">
+					<title>Menu Request from ${customer_name}</title>
+					<style>
+						@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+					</style>
+				</head>
+				<body>
+					<div>
+						<table
+						style="width: 100%; 
+						height: 300px;
+						background-color: #FFFFFF;
+						margin-left: auto;
+						margin-right: auto">
+							<tr>
+								<td style="text-align: center;">
+									<img src="https://firebasestorage.googleapis.com/v0/b/setthetable-app.appspot.com/o/sttLogo.png?alt=media&token=9ee37110-cdb1-4722-99cb-950499aa0750" alt="Set The Table Logo"
+									style="
+									width: 300px;
+									height: 300px;
+									cursor: pointer;
+									margin-bottom: 20px;">
+								</td>
+							</tr>
+						</table>
+						<h4 style="font-size: 32px;
+						font-family: Roboto, Arial, sans-serif;
+						text-align: center;
+						margin-bottom: 38px;">Please create a menu proposal for ${customer_name}</h4>
+						<p style="font-size: 19.8px; font-family: Roboto, Arial, sans-serif;">
+						${customer_name} is hosting an event on ${booking_date} at ${booking_address}. They are expecting ${number_of_guests}.
+						<br>
+						The budget for your proposal is ZAR ${budget_amount}.00 .
+						<br>
+						<br>
+						Their desired menu:
+						${list_of_food(desired_cuisine)}
+						<br>
+						Allergens:
+						${list_of_allergens(restrictions)}
+						</p>
+						<p style="font-family: Roboto, Arial, sans-serif;font-size: 19.8px; margin-bottom: 30px;">In the meantime, you can view the latest Chefs added to our gallery as an example.</p>
+						<a href="https://setthetable.app/app/chefLogin.html"
+						style="height: 60.8px; 
+						width: 132.6px;
+						text-decoration: none;
+						color: #FFFFFF;
+						background-color: #348C31;
+						box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+						font-family: Roboto, Arial, sans-serif;
+						padding: 16px;
+						font-size: 19.8px; 
+						border-radius: 12px;
+						margin-top: 30px;
+						margin-bottom: 40px;">Create Proposal</a>
+						<p style="font-size: 19.8px; 
+						font-family: Roboto, Arial, sans-serif; margin-top: 30px;">Thank you for choosing Set The Table.</p>
+						<p style="font-size: 19.8px; 
+						font-family: Roboto, Arial, sans-serif;text-align: center; margin-top: 60px;">Set the Table; <span style="color: #348C31">serve a memory.</span></p>
+						<div style="background-color: #000000; height: 100px; width: 100%;">
+							<a href="https://setthetable.app/termsAndConditions.html"
+							style="color: #FFFFFF;
+							text-decoration: none;
+							margin-top: 30px;
+							width: 80%;
+							font-family: Roboto, Arial, sans-serif;
+							padding: 10px;
+							padding-top: 30px;
+							font-size: 19.8px;
+							margin-left: auto;
+							margin-right: auto;">
+								Terms
+							</a>
+						</div>
+					</div>
+				</body>`
+			}
+			await transporter.sendMail(mailOptions)
+		})
+		res.status(200).json({message: 'Email sent'})
+		
+	}
+	catch(err){
+		res.status(500).json(err)
+	}
+
+})
 // Start the server
 app.listen(3000, () => {
   console.log('Server started on port 3000');
