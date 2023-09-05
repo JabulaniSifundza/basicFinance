@@ -1284,7 +1284,7 @@ app.post('/api/adminApp', async(res, req)=>{
         const mailOptions = {
             //'"Your Name" <your-email@gmail.com>'
             from: `"Set The Table" <${app_email}>`,
-            to: app_email,
+            to: [app_email, 'smmdladla@icloud.com'],
             subject: `New Chef Application from Chef ${name}! ID: ${chefId}`,
 			html: `<head>
 				<meta charset="UTF-8">
