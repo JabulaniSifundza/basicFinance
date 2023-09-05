@@ -1358,7 +1358,6 @@ app.post('/api/adminApp', async(res, req)=>{
         }
 		await transporter.sendMail(mailOptions)
         res.status(200).json({message: 'Email sent'})
-
     }
     catch(error){
 		console.log(error)
