@@ -1793,7 +1793,7 @@ app.get("/api/webhook", (req, res) => {
    * UPDATE YOUR VERIFY TOKEN
    *This will be the Verify Token value when you set up webhook
   **/
-  const verify_token = "HAPPY"
+  const verify_token = HAPPY
 
   // Parse params from the webhook verification request
   let mode = req.query["hub.mode"];
